@@ -16,19 +16,19 @@ datasource db {
 
 model User {
   id            String         @id @default(uuid())
-  email         String
+  email         String         @unique
   provider      AuthProvider
   name          String
   conversations Conversation[]
 }
 
 model Conversation {
-  id        String    @id @default(uuid())
-  title     String?
-  slug      String
-  userId    String
-  messages  Message[]
-  user      User      @relation(fields: [userId], references: [id])
+  id       String    @id @default(uuid())
+  title    String?
+  slug     String    @unique
+  userId   String
+  messages Message[]
+  user     User      @relation(fields: [userId], references: [id])
 }
 
 model Message {
