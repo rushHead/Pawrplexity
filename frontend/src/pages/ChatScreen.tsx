@@ -5,11 +5,11 @@ import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
 // Material Symbols icon component
-function MIcon({ children, filled = false, className = "" }: { children: string; filled?: boolean; className?: string }) {
+function MIcon({ children, filled = false, className = "", style }: { children: string; filled?: boolean; className?: string; style?: React.CSSProperties }) {
     return (
         <span
             className={`material-symbols-outlined select-none ${className}`}
-            style={filled ? { fontVariationSettings: "'FILL' 1" } : undefined}
+            style={{ ...(filled ? { fontVariationSettings: "'FILL' 1" } : {}), ...style }}
         >
             {children}
         </span>
